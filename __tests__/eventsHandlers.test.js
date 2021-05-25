@@ -4,8 +4,6 @@ require('dotenv').config();
 const timeStamp = require('../timestamp');
 const faker = require('faker');
 const events = require('../events');
-require('../modules/vendor/vendor.js');
-require('../modules/driver/driver.js');
 const pickupHandler = require('../modules/driver/pickupHandler');
 const deliveredHandler = require('../modules/vendor/deliveredHandler');
 const inTransitHandler = require('../modules/vendor/inTransitHandler');
@@ -28,7 +26,7 @@ describe('System\'s monitor working well', ()=>{
     });
 
     test('pickupHandler',()=>{
-        events.emit('pickup', {
+        pickupHandler({
             event: 'pickup',
             time:timeStamp(),
             payload:fakeOrder
@@ -38,13 +36,13 @@ describe('System\'s monitor working well', ()=>{
     });
     
     test('deliveredHandler', ()=>{
-        events.emit('delivered');        
+        deliveredHandler();       
         jest.runAllTimers();
         expect(spyCons).toHaveBeenCalled();
     });
     
     test('inTransitHandler', ()=>{
-        events.emit('in-transit', {
+        inTransitHandler({
             event: 'pickup',
             time:timeStamp(),
             payload:fakeOrder
