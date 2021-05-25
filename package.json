@@ -5,7 +5,7 @@
   "main": "caps.js",
   "scripts": {
     "start": "node caps.js",
-    "test": "jest --coverage --verbose"
+    "test": "jest --coverage --verbose --detectOpenHandles"
   },
   "jest":{
     "testEnvironment": "node"
