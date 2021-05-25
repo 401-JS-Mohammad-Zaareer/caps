@@ -5,7 +5,7 @@
   "main": "caps.js",
   "scripts": {
     "start": "node caps.js",
-    "test": "jest --converage --verbose"
+    "test": "jest --coverage --verbose"
   },
   "jest":{
     "testEnvironment": "node"
